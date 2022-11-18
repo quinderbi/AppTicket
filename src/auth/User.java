@@ -34,10 +34,6 @@ public class User {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void register(String name, String email, String phone, String password) {
         try {
             this.name = name;
@@ -49,16 +45,16 @@ public class User {
         }
     }
 
-    public void login(String email, String password) {
+    public boolean login(String email, String password) {
         try {
             if (this.email.equals(email) && encryption.decrypt(this.password).equals(password)) {
-                System.out.println("Login success");
-                return;
+                return true;
             }
             
-            System.out.println("Login failed");
+            return false;
         } catch (Exception e) {
             System.out.println("Login failed: " + e.getMessage());
+            return false;
         }
     }
 }

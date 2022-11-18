@@ -1,7 +1,11 @@
-package Seat;
+package ticket;
 
 public class Seat {
     private String seatID;
+
+    public Seat(String seatID) {
+        this.seatID = seatID;
+    }
 
     public String getSeatID() {
         return seatID;

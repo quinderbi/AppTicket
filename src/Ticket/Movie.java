@@ -1,4 +1,4 @@
-package Movie;
+package ticket;
 
 public class Movie {
     private String movieID;
@@ -6,6 +6,14 @@ public class Movie {
     private String genre;
     private String director;
     private int duration;
+
+    public Movie(String movieID, String title, String genre, String director, int duration) {
+        this.movieID = movieID;
+        this.title = title;
+        this.genre = genre;
+        this.director = director;
+        this.duration = duration;
+    }
 
     public String getMovieID() {
         return movieID;
@@ -47,4 +55,8 @@ public class Movie {
         this.duration = duration;
     }
 
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

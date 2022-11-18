@@ -1,10 +1,6 @@
-package Schedule;
+package ticket;
 
 import java.time.LocalDateTime;
-import Studio.Studio;
-import Movie.Movie;
-import Ticket.Ticket;
-import Seat.Seat;
 
 public class Schedule {
     private String scheduleID;
@@ -21,11 +17,10 @@ public class Schedule {
         this.tickets = new Ticket[studio.getSeats().length];
     }
 
-    
     public String getScheduleID() {
         return scheduleID;
     }
-    
+
     public void setScheduleID(String scheduleID) {
         this.scheduleID = scheduleID;
     }
@@ -49,7 +44,7 @@ public class Schedule {
     public LocalDateTime getDateTime() {
         return dateTime;
     }
-    
+
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
@@ -78,5 +73,20 @@ public class Schedule {
             }
         }
         return availableSeats;
+    }
+
+    @Override
+    public String toString() {
+        String avSeats = "";
+
+        for (Seat seat : getAvailableSeats()) {
+            if (seat != null) {
+                avSeats += seat.getSeatID() + " ";
+            }
+        }
+        
+        return "Schedule " + this.scheduleID + "\n" + this.movie + "\nStudio no: " + this.studio.getStudioNo() + "\n"
+                + this.dateTime.getDayOfMonth() + "/" + this.dateTime.getMonthValue() + "/" + this.dateTime.getYear()
+                + "\n" + this.dateTime.getHour() + ":" + this.dateTime.getMinute() + "\nAvailable Seats: " + avSeats;
     }
 }

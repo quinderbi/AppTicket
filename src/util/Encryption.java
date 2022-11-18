@@ -12,6 +12,18 @@ public class Encryption {
     private final int DATA_LENGTH = 128;
     private Cipher encryptionCipher;
 
+    public static Encryption getInstance() {
+        try {
+            Encryption encryption = new Encryption();
+            encryption.init();
+
+            return encryption;
+        } catch (Exception e) {
+            System.out.println("Failed to init encryption " + e.getMessage());
+            return null;
+        }
+    }
+
     public void init() throws Exception {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(KEY_SIZE);
