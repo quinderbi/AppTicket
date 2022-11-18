@@ -69,19 +69,11 @@ public class Schedule {
 
     // get Available Seats
     public Seat[] getAvailableSeats() {
-        Seat[] seats = studio.getSeats();
-        Seat[] availableSeats = new Seat[seats.length];
+        Seat[] availableSeats = new Seat[studio.getSeats().length];
         int count = 0;
-        for (Seat seat : seats) {
-            boolean isAvailable = true;
-            for (Ticket ticket : tickets) {
-                if (ticket.getSeat().getSeatID().equals(seat.getSeatID())) {
-                    isAvailable = false;
-                    break;
-                }
-            }
-            if (isAvailable) {
-                availableSeats[count] = seat;
+        for (int i = 0; i < tickets.length; i++) {
+            if (tickets[i] == null) {
+                availableSeats[count] = studio.getSeats()[i];
                 count++;
             }
         }
