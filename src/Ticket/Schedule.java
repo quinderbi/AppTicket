@@ -55,7 +55,7 @@ public class Schedule {
 
     public void addTicket(Ticket ticket) {
         for (int i = 0; i < tickets.length; i++) {
-            if (tickets[i] == null) {
+            if (tickets[i].getSeat() == ticket.getSeat()) {
                 tickets[i] = ticket;
                 break;
             }
