@@ -1,21 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package appticket;
 
-/**
- *
- * @author Quin Derbi
- */
-public class AppTicket {
+import auth.User;
+import util.Encryption;
 
-    /**
-     * @param args the command line arguments
-     */
+public class AppTicket {
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            Encryption encryption = new Encryption();
+            encryption.init();
+
+            User user = new User(encryption);
+            user.register("Ariq Heritsa", "ariqhm@gmail.com", "081808625505", "hehehe");
+
+            user.login("ariqhm@gmail.com", "hehehe");
+        } catch (Exception e) {
+            System.out.println("Failed to run app: " + e.getMessage());
+        }
     }
-    
 }
